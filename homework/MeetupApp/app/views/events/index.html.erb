@@ -1,0 +1,30 @@
+<h1>Events</h1>
+
+<%= link_to 'Add a new event', new_event_path %>
+
+<table class="table unstyled">
+  <tr>
+    <th>Title</th>
+    <th>Happening on</th>
+    <th>Venue</th>
+    <!-- <th></th> -->
+    <th></th>
+    <th></th>
+  </tr>
+
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= link_to event.title.to_s, event %></td>
+    <td><%= event.date %></td>
+    <td><%= link_to Venue.find_by_id(event.venue_id).name, Venue.find_by_id(event.venue_id) %></td>
+    <!-- <td><%= link_to 'Show', event %></td> -->
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
